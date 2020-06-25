@@ -9,7 +9,7 @@ builder:
     - hostname
     - mkdir builds
     - touch builds/data.txt
-    - echo "true" > builds/data.txt
+    - echo $(hostname) > builds/data.txt
   artifacts:
     paths:
       - builds/
