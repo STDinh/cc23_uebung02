@@ -30,7 +30,7 @@ stages:
   - deploy
 
 test:
-  stage: build
+  stage: test
   script:
     - python setup.py test
     - pip install tox flake8  # you can also use tox
