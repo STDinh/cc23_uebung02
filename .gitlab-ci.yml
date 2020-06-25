@@ -2,9 +2,7 @@ stages:
   - build
   - test
 
-artifacts:
-  paths:
-    - builds/
+
 
 builder1:
   stage: build
@@ -14,6 +12,9 @@ builder1:
     - mkdir builds
     - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
+  artifacts:
+    paths:
+      - builds/
 
 builder2:
   stage: build
@@ -23,6 +24,9 @@ builder2:
     - mkdir builds
     - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
+  artifacts:
+    paths:
+      - builds/
 
 builder3:
   stage: build
@@ -32,6 +36,9 @@ builder3:
     - mkdir builds
     - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
+  artifacts:
+    paths:
+      - builds/
 
 tester:
   stage: test
