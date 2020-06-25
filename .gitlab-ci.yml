@@ -2,21 +2,38 @@ stages:
   - build
   - test
 
-builder:
+artifacts:
+  paths:
+    - builds/
+
+builder1:
   stage: build
   script:
     - echo "this is building"
     - hostname
     - mkdir builds
     - touch builds/data.txt
-    - echo $(hostname) > builds/data.txt
-  artifacts:
-    paths:
-      - builds/
+    - echo $(hostname) > builds/data-$(uuidgen).txt
+
+builder2:
+  stage: build
+  script:
+    - echo "this is building"
+    - hostname
+    - mkdir builds
+    - touch builds/data.txt
+    - echo $(hostname) > builds/data-$(uuidgen).txt
+
+builder3:
+  stage: build
+  script:
+    - echo "this is building"
+    - hostname
+    - mkdir builds
+    - touch builds/data.txt
+    - echo $(hostname) > builds/data-$(uuidgen).txt
 
 tester:
   stage: test
   script:
     - echo "this is testing"
-    - hostname
-    - test -f builds/data.txt
