@@ -4,6 +4,8 @@ Deployment Pipelines sind ein wesentlicher Baustein im DevOps Ansatz um Entwickl
 Ziel ist es, Code der in ein Code Repository eingebracht wird, möglichst automatisiert zu integrieren, bauen, testen
 sowie ggf. in eine Umgebung (häufig Test, Staging, Production) auszubringen.
 
+Mit jedem Code push wird also automatisiert geprüft, ob der Code in die bestehende Codebasis integriert werden kann, compilierbar ist, alle Tests passiert und deploybar ist. Auf diese Weise können nur funktionierende Softwarezustände in funktionierende Softwarezustände überführt werden. Entwickler sind so nicht einmal in der Lage Code zu erzeugen, der nicht automatisiert durch die Deployment Pipeline verarbeitbar ist.
+
 Gemäß dem Everything as Code Ansatz versucht man auch Deployment Pipelines als versionierbaren Code ausdrücken zu können.
 Es gibt diverse solcher Managed oder Self-hosted Services die als kommerzielle oder auch als Open Source bereitstehen. Z.B.:
 
@@ -39,7 +41,7 @@ Eine Deployment Pipeline besteht aus einer Sequenz von Stages. Jede Stage kann e
 Stage werden parallel und isoliert voneinander ausgeführt. Eine Stage wird nur dann ausgeführt, wenn alle Jobs der vorherigen Stage
 erfolgreich ausgeführt werden konnten.
 
-Eine typische Pipeline umfasst häufig die folgenden Stages:
+Eine typische Pipeline umfasst häufig die folgenden Stages (grundsätzlich können Pipelines beliebig aussehen, es bietet sich jedoch an bewährten Pipeline Blueprints zu folgen):
 
 - build (zum Erzeugen von Executables)
 - test (zum Testen von Executables)
