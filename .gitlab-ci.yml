@@ -42,3 +42,9 @@ testjob1:
   stage: test
   script:
     - echo "This is test job 1"
+    - mkdir results
+    - touch results/files.txt
+    - ls -la builds/* > results.txt
+  artifacts:
+    paths:
+      - results/
