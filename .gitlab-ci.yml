@@ -10,7 +10,7 @@ buildjob1:
   script:
     - echo "This is job 1"
     - apt-get update
-    - apt-get install openjdk-11-jdk 
+    - apt-get -y install openjdk-11-jdk 
     - mkdir builds
     - javac -d builds src/English.java
   artifacts:
