@@ -9,9 +9,8 @@ buildjob1:
   stage: build
   script:
     - echo "This is job 1"
-    - apk add util-linux
+    - apk add util-linux openjdk11
     - mkdir builds
-    - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
   artifacts:
     paths:
@@ -21,9 +20,8 @@ buildjob2:
   stage: build
   script:
     - echo "This is job 2"
-    - apk add util-linux
+    - apk add util-linux openjdk11
     - mkdir builds
-    - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
   artifacts:
     paths:
@@ -33,9 +31,8 @@ buildjob3:
   stage: build
   script:
     - echo "This is job 3"
-    - apk add util-linux
+    - apk add util-linux openjdk11
     - mkdir builds
-    - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
   artifacts:
     paths:
