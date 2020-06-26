@@ -1,44 +1,24 @@
 stages:
-  - build
-  - test
-  - deploy
+    - build
+    - test
+    - deploy
 
-buildjob1:
-  stage: build
-  image: openjdk:14-jdk
-  script:
-    - mkdir builds
-    - javac -d builds src/English.java
-  artifacts:
-    paths:
-      - builds/
+job1:
+    stage: build
+    script:
+        - echo "Hello I am job 1"
 
-buildjob2:
-  stage: build
-  image: openjdk:14-jdk
-  script:
-    - mkdir builds
-    - javac -d builds src/German.java
-  artifacts:
-    paths:
-      - builds/
+job2:
+    stage: build
+    script:
+        - "echo "Hello I am job 2"
 
-buildjob3:
-  stage: build
-  image: openjdk:14-jdk
-  script:
-    - mkdir builds
-    - javac -d builds src/Spanish.java
-  artifacts:
-    paths:
-      - builds/
+job3:
+    stage: test
+    script:
+        - "echo "Hello I am job 3"
 
-testjob1:
-  stage: test
-  image: openjdk:14-jdk
-  script:
-    - echo "This is test job 1"
-    - cd builds
-    - java English | grep "Hello world"
-    - java German | grep "Hallo Welt"
-    - java Spanish | grep "Ola mundo"
+job4:
+    stage: test
+    script:
+        - "echo "Hello I am job 4"
