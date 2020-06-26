@@ -84,7 +84,7 @@ __Aufgaben:__
    ![Pipeline](pipeline.png)
 5. Klicken Sie auf einen dieser Jobs, dann erhalten Sie den Konsolenoutput des Jobs.
    
-   ![Job console output](joboutput.png)
+   ![Job console output](job-console.png)
 
 Eine Pipeline ist also sehr einfach mit einer YAML Datei definierbar. YAML Dateien wiederum sind gut durch Code Versionssysteme versionierbar.
 Das ist das Prinzip von einer Deployment Pipeline as Code. Sie sehen an diesem Beispiel weitere Aspekte.
