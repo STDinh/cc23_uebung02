@@ -35,7 +35,53 @@ registrieren.
 
 ### Übung 1: Erzeugung von Buildpipelines
 
-to be done
+Eine Deployment Pipeline besteht aus einer Sequenz von Stages. Jede Stage kann ein oder mehrere Jobs haben. Alle Jobs innerhalb einer
+Stage werden parallel und isoliert voneinander ausgeführt. Eine Stage wird nur dann ausgeführt, wenn alle Jobs der vorherigen Stage
+erfolgreich ausgeführt werden konnten.
+
+Eine typische Pipeline umfasst häufig die folgenden Stages:
+
+- build (zum Erzeugen von Executables)
+- test (zum Testen von Executables)
+- deploy (zum Ausbringen von Executables)
+
+Solch eine einfache Deployment Pipeline wollen wir nun bauen. Indem Sie die folgenden Schritte ausführen:
+
+__Aufgaben:__
+
+1. Forken Sie hierzu bitte dieses Repository in Gitlab.
+2. Legen Sie in diesem Repository eine `.gitlab-ci.yml` Datei an. Diese Datei definiert Ihre Pipeline, die Gitlab mit jedem Push in das Repository automatisch anstößt.
+3. Fügen Sie in diese Datei nun bitte folgende Inhalte ein und committen/pushen Sie diese in das Repository:
+
+    ```yaml
+    stages:
+        - build
+        - test
+        - deploy
+
+    job1:
+        stage: build
+        script:
+            - echo "Hello I am job 1"
+
+    job2:
+        stage: build
+        script:
+            - "echo "Hello I am job 2"
+
+    job3:
+        stage: test
+        script:
+            - "echo "Hello I am job 3"
+
+    job4:
+        stage: test
+        script:
+            - "echo "Hello I am job 3"
+    ```
+4. Gitlab stößt dann automatisch, die so definiert Buildpipeline aus.
+
+
 
 ## Quellen für weitergehende Informationen:
 
