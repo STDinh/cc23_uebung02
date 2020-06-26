@@ -79,7 +79,7 @@ __Aufgaben:__
         script:
             - echo "Hello I am job 4"
     ```
-4. Gitlab stößt dann automatisch, die so definierte Pipeline aus.
+4. Gitlab stößt dann automatisch, die so definierte [Pipeline](pipelines) aus.
 
 
 
