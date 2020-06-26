@@ -15,7 +15,7 @@ Es gibt diverse solcher Managed oder Self-hosted Services die als kommerzielle o
 - und mehr
 
 Da Gitlab als Open Source Lösung einfach installiert werden kann, werden wir das Prinzip einer Deployment Pipeline
-as Code am Typvertreter Gitlab CI demonstrieren. Die Ansätze anderer CI/(CD Dienste funktionieren aber nach sehr
+as Code am Typvertreter Gitlab CI demonstrieren. Die Ansätze anderer CI/CD Dienste funktionieren aber nach sehr
 vergleichbaren Konzepten. Die Wahl auf Gitlab CI als Typvertreter erfolgt schlicht und ergreifend auf Basis der
 guten Verfügbarkeit von Gitlab als Open Source Software und dessen häufigen Einsatz in Cloud-native Kontexten.
 
