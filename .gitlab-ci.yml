@@ -10,7 +10,6 @@ buildjob1:
   script:
     - echo "This is job 1"
     - apk add util-linux
-    - uuidgen
     - mkdir builds
     - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
@@ -22,7 +21,7 @@ buildjob2:
   stage: build
   script:
     - echo "This is job 2"
-    - hostname
+    - apk add util-linux
     - mkdir builds
     - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
@@ -34,7 +33,7 @@ buildjob3:
   stage: build
   script:
     - echo "This is job 3"
-    - hostname
+    - apk add util-linux
     - mkdir builds
     - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
