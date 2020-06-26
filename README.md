@@ -79,7 +79,8 @@ __Aufgaben:__
         script:
             - echo "Hello I am job 4"
     ```
-4. Gitlab führt dann automatisch, die so definierte [Pipeline](../../../pipelines) aus. ![Pipeline](pipeline.png)
+4. Gitlab führt dann automatisch, die so definierte [Pipeline](../../../pipelines) aus.
+   ![Pipeline](pipeline.png)
 
 
 
