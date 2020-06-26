@@ -33,7 +33,11 @@ registrieren.
 - Deployments to Kubernetes
 - Deployments to Serverless Environments
 
-## Follow up rading and watching:
+### Übung 1: Erzeugung von Buildpipelines
+
+to be done
+
+## Quellen für weitergehende Informationen:
 
 - Youtube: [Gitlab CI pipeline tutorial for beginners](https://youtu.be/Jav4vbUrqII)
 - Youtube: [Automating Kubernetes Deployments](https://youtu.be/wEDRfAz6_Uw)
