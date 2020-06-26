@@ -7,6 +7,7 @@ buildjob1:
   stage: build
   script:
     - echo "This is job 1"
+    - uuidgen
     - mkdir builds
     - touch builds/data.txt
     - echo $(hostname) > builds/data-$(uuidgen).txt
