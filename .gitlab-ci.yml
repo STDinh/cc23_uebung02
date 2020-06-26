@@ -1,4 +1,4 @@
-image: alpine:3.12
+image: ubuntu:18.04
 
 stages:
   - build
@@ -9,7 +9,7 @@ buildjob1:
   stage: build
   script:
     - echo "This is job 1"
-    - apk add util-linux openjdk11
+    - apt-get install openjdk-11-jdk 
     - mkdir builds
     - javac -d builds src/English.java
   artifacts:
