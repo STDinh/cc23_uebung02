@@ -1,13 +1,23 @@
 stages:
   - build
   - test
+  - deploy
 
-
-
-builder1:
+buildjob1:
   stage: build
   script:
-    - echo "this is building"
+    - echo "This is job 1"
+    - mkdir builds
+    - touch builds/data.txt
+    - echo $(hostname) > builds/data-$(uuidgen).txt
+  artifacts:
+    paths:
+      - builds/
+
+buildjob2:
+  stage: build
+  script:
+    - echo "This is job 2"
     - hostname
     - mkdir builds
     - touch builds/data.txt
@@ -16,10 +26,10 @@ builder1:
     paths:
       - builds/
 
-builder2:
+buildjob3:
   stage: build
   script:
-    - echo "this is building"
+    - echo "This is job 3"
     - hostname
     - mkdir builds
     - touch builds/data.txt
@@ -28,19 +38,7 @@ builder2:
     paths:
       - builds/
 
-builder3:
-  stage: build
-  script:
-    - echo "this is building"
-    - hostname
-    - mkdir builds
-    - touch builds/data.txt
-    - echo $(hostname) > builds/data-$(uuidgen).txt
-  artifacts:
-    paths:
-      - builds/
-
-tester:
+testjob1:
   stage: test
   script:
-    - echo "this is testing"
+    - echo "This is test job 1"
