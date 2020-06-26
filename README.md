@@ -80,7 +80,26 @@ __Aufgaben:__
             - echo "Hello I am job 4"
     ```
 4. Gitlab führt dann automatisch, die so definierte [Pipeline](../../../pipelines) aus.
+   
    ![Pipeline](pipeline.png)
+5. Klicken Sie auf einen dieser Jobs, dann erhalten Sie den Konsolenoutput des Jobs.
+   
+   ![Job console output](joboutput.png)
+
+Eine Pipeline ist also sehr einfach mit einer YAML Datei definierbar. YAML Dateien wiederum sind gut durch Code Versionssysteme versionierbar.
+Das ist das Prinzip von einer Deployment Pipeline as Code. Sie sehen an diesem Beispiel weitere Aspekte.
+
+- Jobs können einer Stage zugeordnet werden (z.B. mittels `stage: test`).
+- Jobs sind eigentlich nichts weiter als Shellskripte, die in einem isolierten Container ausgeführt werden.
+- Können alle Jobs einer Stage erfolgreich ausgeführt werden, (exit code == 0) werden die Jobs der nächsten Stage gestartet.
+- Schlägt ein Job fehl (exit code != 0), wird die nächste Stage nicht gestartet (ergänzen Sie den Befehl `exit 1` in job3.
+    ```yaml
+    job3:
+        stage: test
+        script:
+            - echo "Hello I am job 3"
+            - exit 1
+    ```
 
 
 
