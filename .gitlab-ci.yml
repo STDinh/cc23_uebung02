@@ -1,4 +1,3 @@
-
 stages:
   - build
   - test
@@ -39,4 +38,6 @@ testjob1:
   script:
     - echo "This is test job 1"
     - cd builds
-    - ls -la *
+    - java English | grep "Hello world"
+    - java German | grep "Hallo Welt"
+    - java Spanish | grep "Ola mundo"
