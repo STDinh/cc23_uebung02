@@ -1,16 +1,12 @@
-image: ubuntu:18.04
 
 stages:
   - build
   - test
   - deploy
-  
-before_script:
-  - apt-get update
-  - apt-get -y install openjdk-11-jdk
 
 buildjob1:
   stage: build
+  image: openjdk:14-jdk
   script:
     - mkdir builds
     - javac -d builds src/English.java
@@ -20,6 +16,7 @@ buildjob1:
 
 buildjob2:
   stage: build
+  image: openjdk:14-jdk
   script:
     - mkdir builds
     - javac -d builds src/German.java
@@ -29,6 +26,7 @@ buildjob2:
 
 buildjob3:
   stage: build
+  image: openjdk:14-jdk
   script:
     - mkdir builds
     - javac -d builds src/Spanish.java
