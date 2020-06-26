@@ -4,14 +4,15 @@ stages:
   - build
   - test
   - deploy
+  
+before_script:
+  - apt-get update
+  - apt-get -y install openjdk-11-jdk
+  - mkdir builds
 
 buildjob1:
   stage: build
   script:
-    - echo "This is job 1"
-    - apt-get update
-    - apt-get -y install openjdk-11-jdk 
-    - mkdir builds
     - javac -d builds src/English.java
   artifacts:
     paths:
@@ -20,9 +21,6 @@ buildjob1:
 buildjob2:
   stage: build
   script:
-    - echo "This is job 2"
-    - apt-get -y install openjdk-11-jdk 
-    - mkdir builds
     - javac -d builds src/German.java
   artifacts:
     paths:
@@ -31,9 +29,6 @@ buildjob2:
 buildjob3:
   stage: build
   script:
-    - echo "This is job 3"
-    - apt-get -y install openjdk-11-jdk 
-    - mkdir builds
     - javac -d builds src/Spanish.java
   artifacts:
     paths:
