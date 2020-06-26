@@ -11,14 +11,14 @@ job1:
 job2:
     stage: build
     script:
-        - "echo "Hello I am job 2"
+        - echo "Hello I am job 2"
 
 job3:
     stage: test
     script:
-        - "echo "Hello I am job 3"
+        - echo "Hello I am job 3"
 
 job4:
     stage: test
     script:
-        - "echo "Hello I am job 4"
+        - echo "Hello I am job 4"

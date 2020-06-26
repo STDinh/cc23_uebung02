@@ -67,19 +67,19 @@ __Aufgaben:__
     job2:
         stage: build
         script:
-            - "echo "Hello I am job 2"
+            - echo "Hello I am job 2"
 
     job3:
         stage: test
         script:
-            - "echo "Hello I am job 3"
+            - echo "Hello I am job 3"
 
     job4:
         stage: test
         script:
-            - "echo "Hello I am job 3"
+            - echo "Hello I am job 4"
     ```
-4. Gitlab stößt dann automatisch, die so definiert Buildpipeline aus.
+4. Gitlab stößt dann automatisch, die so definierte Pipeline aus.
 
 
 
