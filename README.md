@@ -28,5 +28,8 @@ registrieren.
 - Parallele Ausführung von Jobs innerhalb einer Stage, sequentielle Ausführung der einzelnen Stages
 - Weiterreichen von Artifacts zwischen Stages
 
+## Follow up rading and watching:
+
+- Youtube: [Gitlab CI pipeline tutorial for beginners](https://youtu.be/Jav4vbUrqII)
 
 
