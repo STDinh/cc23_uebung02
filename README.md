@@ -1,20 +1,20 @@
 # Lab: Deployment Pipelines as Code
 
-Deployment Pipelines sind ein wesentlicher Baustein im DevOps Ansatz um Entwicklungszyklen kurz und agil zu halten.
+Deployment Pipelines sind ein wesentlicher Baustein im DevOps Ansatz, um Entwicklungszyklen schnell und agil zu halten.
 Ziel ist es, Code der in ein Code Repository eingebracht wird, möglichst automatisiert zu integrieren, bauen, testen
 sowie ggf. in eine Umgebung (häufig Test, Staging, Production) auszubringen.
 
-Mit jedem Code push wird also automatisiert geprüft, ob der Code in die bestehende Codebasis integriert werden kann, compilierbar ist, alle Tests passiert und deploybar ist. Auf diese Weise können nur funktionierende Softwarezustände in funktionierende Softwarezustände überführt werden. Entwickler sind so nicht einmal in der Lage Code zu erzeugen, der nicht automatisiert durch die Deployment Pipeline verarbeitbar ist.
+Mit jedem Code Push wird also automatisiert geprüft, ob der Code in die bestehende Codebasis integriert werden kann, compilierbar ist, alle Tests passiert und deploybar ist. Auf diese Weise können nur funktionierende Softwarezustände in funktionierende Softwarezustände überführt werden. Entwickler sind so nicht einmal in der Lage Code zu erzeugen, der nicht automatisiert durch die Deployment Pipeline verarbeitbar ist.
 
 Gemäß dem Everything as Code Ansatz versucht man auch Deployment Pipelines als versionierbaren Code ausdrücken zu können.
-Es gibt diverse solcher Managed oder Self-hosted Services die als kommerzielle oder auch als Open Source bereitstehen. Z.B.:
+Es gibt diverse solcher Managed oder Self-hosted Services, die als kommerzielle oder auch als Open Source Software genutzt werden können. Z.B.:
 
 - GitLab CI
 - Circle CI
 - Travis CI
 - Jenkins
 - Bitbucket Pipelines
-- und mehr
+- und viele mehr
 
 Da Gitlab als Open Source Lösung einfach installiert werden kann, werden wir das Prinzip einer Deployment Pipeline
 as Code am Typvertreter Gitlab CI demonstrieren. Die Ansätze anderer CI/CD Dienste funktionieren aber nach sehr
@@ -47,13 +47,13 @@ Eine typische Pipeline umfasst häufig die folgenden Stages (grundsätzlich kön
 - test (zum Testen von Executables)
 - deploy (zum Ausbringen von Executables)
 
-Solch eine einfache Deployment Pipeline wollen wir nun bauen. Indem Sie die folgenden Schritte ausführen:
+Solch eine einfache Deployment Pipeline wollen wir nun bauen. Führen Sie hierzu bitte die folgenden Schritte aus:
 
 __Aufgaben:__
 
 1. Forken Sie hierzu bitte dieses Repository in Gitlab.
-2. Legen Sie in diesem Repository eine `.gitlab-ci.yml` Datei an. Diese Datei definiert Ihre Pipeline, die Gitlab mit jedem Push in das Repository automatisch anstößt.
-3. Fügen Sie in diese Datei nun bitte folgende Inhalte ein und committen/pushen Sie diese in das Repository:
+2. Legen Sie in diesem geforkten Repository eine `.gitlab-ci.yml` Datei an. Diese Datei definiert Ihre Pipeline, die Gitlab mit jedem Push in das Repository automatisch anstößt.
+3. Fügen Sie in diese Datei nun bitte folgende Inhalte ein und committen+pushen Sie `.gitlab-ci.yml` in das Repository:
 
     ```yaml
     stages:
@@ -89,12 +89,11 @@ __Aufgaben:__
    ![Job console output](job-console.png)
 
 Eine Pipeline ist also sehr einfach mit einer YAML Datei definierbar. YAML Dateien wiederum sind gut durch Code Versionssysteme versionierbar.
-Das ist das Prinzip von einer Deployment Pipeline as Code. Sie sehen an diesem Beispiel weitere Aspekte.
+Das ist eigentlich auch schon das wesentliche Prinzip von einer Deployment Pipeline as Code. Sie sehen an diesem Beispiel allerdings auch bereits weitere Aspekte die typisch für Cloud-native Deployment Ansätze sind.
 
-- Jobs können einer Stage zugeordnet werden (z.B. mittels `stage: test`).
 - Jobs sind eigentlich nichts weiter als Shellskripte, die in einem isolierten Container ausgeführt werden.
 - Können alle Jobs einer Stage erfolgreich ausgeführt werden, (exit code == 0) werden die Jobs der nächsten Stage gestartet.
-- Schlägt ein Job fehl (exit code != 0), wird die nächste Stage nicht gestartet. Sie können das ganz einfach ausprobieren, indem Sie den Befehl `exit 1` in job3 ergänzen.
+- Schlägt ein Job fehl (exit code != 0), wird die nächste Stage nicht gestartet. Sie können das ganz einfach ausprobieren, indem Sie bspw. den Befehl `exit 1` in *job3* ergänzen.
     ```yaml
     job3:
         stage: test
