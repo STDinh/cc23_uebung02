@@ -17,6 +17,7 @@ job3:
     stage: test
     script:
         - echo "Hello I am job 3"
+        - exit 1
 
 job4:
     stage: deploy
