@@ -92,7 +92,7 @@ Das ist das Prinzip von einer Deployment Pipeline as Code. Sie sehen an diesem B
 - Jobs können einer Stage zugeordnet werden (z.B. mittels `stage: test`).
 - Jobs sind eigentlich nichts weiter als Shellskripte, die in einem isolierten Container ausgeführt werden.
 - Können alle Jobs einer Stage erfolgreich ausgeführt werden, (exit code == 0) werden die Jobs der nächsten Stage gestartet.
-- Schlägt ein Job fehl (exit code != 0), wird die nächste Stage nicht gestartet (ergänzen Sie den Befehl `exit 1` in job3.
+- Schlägt ein Job fehl (exit code != 0), wird die nächste Stage nicht gestartet. Sie können das ganz einfach ausprobieren, indem Sie den Befehl `exit 1` in job3 ergänzen.
     ```yaml
     job3:
         stage: test
@@ -100,6 +100,9 @@ Das ist das Prinzip von einer Deployment Pipeline as Code. Sie sehen an diesem B
             - echo "Hello I am job 3"
             - exit 1
     ```
+    Die Pipeline schlägt dann in job3 in Stage `test` fehl.
+
+    ![Pipeline job failed](pipeline-job-failed.png)
 
 
 
