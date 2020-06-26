@@ -75,7 +75,7 @@ __Aufgaben:__
             - echo "Hello I am job 3"
 
     job4:
-        stage: test
+        stage: deploy
         script:
             - echo "Hello I am job 4"
     ```
