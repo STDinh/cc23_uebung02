@@ -19,5 +19,14 @@ as Code am Typvertreter Gitlab CI demonstrieren. Die Ansätze anderer CI/(CD Die
 vergleichbaren Konzepten. Die Wahl auf Gitlab CI als Typvertreter erfolgt schlicht und ergreifend auf Basis der
 guten Verfügbarkeit von Gitlab als Open Source Software und dessen häufigen Einsatz in Cloud-native Kontexten.
 
+Wer mag, kann dieses Lab auch mittels des Managed Service Gitlab.com nachvollziehen. Hierzu müssen Sie sich allerdings
+registrieren.
+
+## Inhalt
+
+- Erzeugung einer Build-Pipeline mittels einer Sequenz von Stages
+- Parallele Ausführung von Jobs innerhalb einer Stage, sequentielle Ausführung der einzelnen Stages
+- Weiterreichen von Artifacts zwischen Stages
+
 
 
