@@ -27,7 +27,11 @@ registrieren.
 - Erzeugung einer Build-Pipeline mittels einer Sequenz von Stages
 - Parallele Ausführung von Jobs innerhalb einer Stage, sequentielle Ausführung der einzelnen Stages
 - Weiterreichen von Artifacts zwischen Stages
+- Informationen in die Build-Pipeline mittels [Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html) geben.
+- Nutzung von Images
+- Bereitstellung von Images
 - Deployments to Kubernetes
+- Deployments to Serverless Environments
 
 ## Follow up rading and watching:
 
