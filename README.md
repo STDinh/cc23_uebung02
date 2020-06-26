@@ -27,9 +27,12 @@ registrieren.
 - Erzeugung einer Build-Pipeline mittels einer Sequenz von Stages
 - Parallele Ausführung von Jobs innerhalb einer Stage, sequentielle Ausführung der einzelnen Stages
 - Weiterreichen von Artifacts zwischen Stages
+- Deployments to Kubernetes
 
 ## Follow up rading and watching:
 
 - Youtube: [Gitlab CI pipeline tutorial for beginners](https://youtu.be/Jav4vbUrqII)
+- Youtube: [Automating Kubernetes Deployments](https://youtu.be/wEDRfAz6_Uw)
+- Youtube: [Continuous Integration with GitLab CI](https://youtu.be/EuwLdbCu3DE)
 
 
