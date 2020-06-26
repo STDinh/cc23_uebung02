@@ -9,6 +9,7 @@ buildjob1:
   stage: build
   script:
     - echo "This is job 1"
+    - apk add util-linux
     - uuidgen
     - mkdir builds
     - touch builds/data.txt
