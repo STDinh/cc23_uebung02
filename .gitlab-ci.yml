@@ -9,6 +9,7 @@ buildjob1:
   stage: build
   script:
     - echo "This is job 1"
+    - apt-get update
     - apt-get install openjdk-11-jdk 
     - mkdir builds
     - javac -d builds src/English.java
