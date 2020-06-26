@@ -11,7 +11,7 @@ buildjob1:
     - echo "This is job 1"
     - apk add util-linux openjdk11
     - mkdir builds
-    - echo $(hostname) > builds/data-$(uuidgen).txt
+    - javac -d builds src/English.java
   artifacts:
     paths:
       - builds/
@@ -22,7 +22,7 @@ buildjob2:
     - echo "This is job 2"
     - apk add util-linux openjdk11
     - mkdir builds
-    - echo $(hostname) > builds/data-$(uuidgen).txt
+    - javac -d builds src/German.java
   artifacts:
     paths:
       - builds/
@@ -33,7 +33,7 @@ buildjob3:
     - echo "This is job 3"
     - apk add util-linux openjdk11
     - mkdir builds
-    - echo $(hostname) > builds/data-$(uuidgen).txt
+    - javac -d builds src/Spanish.java
   artifacts:
     paths:
       - builds/
@@ -43,5 +43,4 @@ testjob1:
   script:
     - echo "This is test job 1"
     - mkdir results
-    - touch results/files.txt
     - ls -la builds/*
