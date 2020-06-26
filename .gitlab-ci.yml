@@ -35,6 +35,7 @@ buildjob3:
 
 testjob1:
   stage: test
+  image: openjdk:14-jdk
   script:
     - echo "This is test job 1"
     - cd builds
