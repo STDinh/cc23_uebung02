@@ -28,7 +28,7 @@ registrieren.
 
 - [Übung 1: Erzeugung von Deployment Pipelines](#übung-1-erzeugung-von-deployment-pipelines)
 - [Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)](#übung-2-weiterreichen-von-job-erzeugnissen-artifacts)
-- Übung 3: Informationen in die Pipeline mittels [Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html) geben.
+- [Übung 3: Informationen in eine Pipeline mittels Umgebungsvariablen geben](#übung-3-informationen-in-eine-pipeline-mittels-umgebungsvariablen-geben)
 - Nutzung von Images
 - Bereitstellung von Images
 - Deployments to Kubernetes
@@ -157,7 +157,7 @@ ERROR: Job failed: exit code 1
 
 Und dies obwohl die Dateien in job1 und job2 korrekt angelegt wurden. Allerdings in einem Container. Und alle Jobs laufen
 in isolierten Containern voneinander ab, d.h. job1 kennt job2 und job3 nicht, und job2 kenn job1 sowie job3 nicht, usw.
-Wenn man Erzeugnisse eines Jobs anderen Jobs bereitstellen muss innerhalb einer Pipeline, dann kann man dies mittels Artefakten
+Wenn man Erzeugnisse eines Jobs anderen Jobs innerhalb einer Pipeline bereitstellen muss, dann kann man dies mittels Artefakten
 machen.
 
 Um Artefakte zu kennzeichnen, können Sie folgenden Eintrag den Jobs job1 und job2 hinzufügen.
@@ -185,6 +185,16 @@ echo "Hello I am job 2" > build/job-result.txt
 
 Dann werden Sie nur eine Ausgabe von job1 oder job2 bekommen. Welche Ausgabe ist davon abhängig welche Job Artifakte von der Pipeline
 aus job1 und job2 als letztes gesichert wurden. Gehen Sie davon aus, dass dies nicht deterministisch ist - insbesondere bei parallel ablaufenden Jobs.
+
+Weiteres zum Artefakt-Handling finden Sie [hier](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html).
+
+### Übung 3: Informationen in eine Pipeline mittels Umgebungsvariablen geben
+
+Jobs innerhalb von Pipelines benötigen ggf. weitere Informationen. Gem. den 12 Factor Prinzipien kann man diese
+den Containern als Umgebungsvariablen bereitstellen. Gitlab selber hat eine ganze Reihe von vordefinierten Umgebungsvariablen,
+die man auswerten kann, um die Pipeline zu steuern. Z.B. könnte ein Build auf dem Master-Branch grundsätzlich in die 
+Production Umgebung deployt werden, ein Build auf dem develop Branch in die Staging Umgebung und alle anderen Branches nur in die Test Umgebung.
+
 
 ## Quellen für weitergehende Informationen:
 
