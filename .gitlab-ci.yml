@@ -23,7 +23,7 @@ job2:
             - build/
     only:
         variables:
-            $CI_COMMIT_REF_NAME == "release"
+            - $CI_COMMIT_REF_NAME == "release"
 
 job3:
     stage: generate
