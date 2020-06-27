@@ -113,7 +113,7 @@ Zum Ende der Pipeline soll vielleicht auch eine `jar`-Datei als Endergebnis der 
 
 Hierfür dienen in Pipelines sogenannte Artefakte. Artefakte sind Job Erzeugnisse, die zwischen Jobs entlang einer Stage Sequenz fließen.
 
-__Aufgabe 2.1:__
+__Aufgabe__:
 
 Ändern Sie bitte Ihre Pipeline wie folgt ab:
 
@@ -143,12 +143,46 @@ job3:
 Die Jobs job1 und job2 lenken ihre Resultate also in zwei Dateien um, die im `build` Verzeichnis gespeichert werden.
 Wir würden an dieser Stelle erwarten, dass der job3 daher folgende Konsolenausgabe erzeugen sollte:
 
-```sh
+```
 Hello I am job1
 Hello I am job2
 ```
 
-Tatsächlich passiert dies aber nicht. Warum?
+Tatsächlich schlägt der job3 aber wie folgt fehl:
+
+```
+cat: can't open 'build/*-result.txt': No such file or directory
+$ cat build/*-result.txt
+ERROR: Job failed: exit code 1
+```
+
+Und dies obwohl die Dateien in job1 und job2 korrekt angelegt wurden. Allerdings in einem Container. Und alle Jobs laufen
+in isolierten Containern voneinander ab, d.h. job1 kennt job2 und job3 nicht, und job2 kenn job1 sowie job3 nicht, usw.
+Wenn man Erzeugnisse eines Jobs anderen Jobs bereitstellen muss innerhalb einer Pipeline, dann kann man dies mittels Artefakten
+machen.
+
+Um Artefakte zu kennzeichnen, können Sie folgenden Eintrag den Jobs job1 und job2 hinzufügen.
+
+```yaml
+artifacts:
+    paths:
+    - build/
+```
+
+Diese Artefakte stehen dann allen Jobs in der Pipeline zur Verfügung. Sie müssen darauf achten, dass unterschiedliche Jobs
+unterschiedlich benannte Artefakte erzeugen, ansonsten überschreiben sich gleichbenannte Artefakte gegenseitig.
+
+Auch dies können Sie einmal ausprobieren, indem Sie anstelle von 
+
+```
+echo "Hello I am job 2" > build/job2-result.txt
+```
+
+folgendes schreiben (also die Job-Nummern in den Artefaktbezeichnern entfernen).
+
+```
+echo "Hello I am job 2" > build/job-result.txt
+```
 
 ## Quellen für weitergehende Informationen:
 

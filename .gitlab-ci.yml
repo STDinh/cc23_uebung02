@@ -7,13 +7,19 @@ job1:
     script:
         - mkdir build
         - echo "Hello I am job 1" > build/job1-result.txt
+    artifacts:
+        paths:
+            - build/
 
 job2:
     stage: generate
     script:
         - mkdir build
         - echo "Hello I am job 2" > build/job2-result.txt
-
+    artifacts:
+        paths:
+            - build/
+            
 job3:
     stage: consume
     script:
