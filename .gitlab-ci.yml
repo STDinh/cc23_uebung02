@@ -6,7 +6,7 @@ job1:
     stage: generate
     script:
         - mkdir build
-        - echo "Hello I am job 1 executed on the $CI_COMMIT_BRANCH branch" > build/job-result.txt
+        - echo Hello I am job 1 executed on the $CI_COMMIT_BRANCH branch > build/job1-result.txt
     artifacts:
         paths:
             - build/
@@ -15,7 +15,7 @@ job2:
     stage: generate
     script:
         - mkdir build
-        - echo "Hello I am job 2 executed on the $CI_COMMIT_BRANCH branch" > build/job-result.txt
+        - echo Hello I am job 2 executed on the $CI_COMMIT_BRANCH branch > build/job2-result.txt
     artifacts:
         paths:
             - build/
