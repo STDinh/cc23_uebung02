@@ -195,6 +195,87 @@ den Containern als Umgebungsvariablen bereitstellen. Gitlab selber hat eine ganz
 die man auswerten kann, um die Pipeline zu steuern. Z.B. könnte ein Build auf dem Master-Branch grundsätzlich in die 
 Production Umgebung deployt werden, ein Build auf dem release Branch in die Staging Umgebung und alle anderen Branches nur in die Test Umgebung.
 
+__Aufgabe:__
+
+Ändern Sie die Pipeline nun bitte wie folgt ab:
+
+```yaml
+stages:
+    - generate
+    - consume
+
+job1:
+    stage: generate
+    script:
+        - mkdir build
+        - echo "Hello I am job 1 executed on the $CI_COMMIT_REF_NAME branch only" > build/job1-result.txt
+    artifacts:
+        paths:
+            - build/
+    only:
+        - master
+
+job2:
+    stage: generate
+    script:
+        - mkdir build
+        - echo "Hello I am job 2 executed on the $CI_COMMIT_REF_NAME branch only" > build/job2-result.txt
+    artifacts:
+        paths:
+            - build/
+    only:
+        variables:
+            - $CI_COMMIT_REF_NAME == "release"
+
+job3:
+    stage: generate
+    script:
+        - mkdir build
+        - echo "Hello I am job3 and always executed except for the master or release branch" > build/job3-result.txt
+    artifacts:
+        paths:
+            - build/
+    except:
+        - master
+        - release
+            
+job4:
+    stage: consume
+    script:
+        - cat build/*-result.txt 
+```
+
+Dies erweitert die Pipeline um einen weiteren Job in der generate Stage. Jobs werden nun aber abhängig von Umgebungsvariablen
+ausgeführt.
+
+- job1 wird nur auf dem master Branch ausgeführt.
+- job2 wird nur auf dem release Branch ausgeführt.
+- job3 wird auf allen anderen Branches ausgeführt.
+
+Hierzu wurden `only` bzw. `except` den Jobs als Bedingung mitgegeben. 
+
+- [`only`](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) führt einen Job nur aus, wenn alle Bedingungen erfüllt sind.
+- [`except`](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) führt einen Job nur aus, wenn keine der Bedingungen erfüllt ist.
+
+Veranschaulichen Sie sich die Wirkungsweise:
+
+1. Pushen Sie dieses Pipeline einmal in den master Branch erhalten Sie die Ausgabe im job4
+    ```
+    Hello I am job 1 executed on the master branch only.
+    ```
+2. Pushen Sie diese Pipeline in den release Branch erhalten Sie die Ausgabe im job4.
+    ```
+    Hello I am job 1 executed on the release branch only.
+    ```
+3. Pushen Sie diese Pipeline in irgendeinen anderen Branch erhalten Sie die Ausgabe im job4.
+    ```
+    Hello I am job3 and always executed except for the master or release branch
+    ```
+
+Auf diese Weise lassen sich einzelne Jobs in der Pipeline nur unter Bedingungen ausführen,
+die sich über Umgebungsvariablen setzen lassen.
+
+
 
 
 ## Quellen für weitergehende Informationen:
