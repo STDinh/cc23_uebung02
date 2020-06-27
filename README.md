@@ -170,7 +170,7 @@ artifacts:
 ```
 
 Diese Artefakte stehen dann allen Jobs in der Pipeline zur Verfügung. Sie müssen darauf achten, dass unterschiedliche Jobs
-unterschiedlich benannte Artefakte erzeugen, ansonsten überschreiben sich gleichbenannte Artefakte gegenseitig.
+unterschiedlich benannte Artefakte erzeugen, ansonsten überschreiben sich identisch benannte Artefakte gegenseitig.
 
 Auch dies können Sie einmal ausprobieren, indem Sie anstelle von 
 
@@ -178,16 +178,20 @@ Auch dies können Sie einmal ausprobieren, indem Sie anstelle von
 echo "Hello I am job 2" > build/job2-result.txt
 ```
 
-folgendes schreiben (also die Job-Nummern in den Artefaktbezeichnern entfernen).
+folgendes schreiben (also die Job-Nummern in den Artefaktbezeichnern sowohl in Job1 als auch in Job2 entfernen).
 
 ```
 echo "Hello I am job 2" > build/job-result.txt
 ```
 
+Dann werden Sie nur eine Ausgabe von job1 oder job2 bekommen. Welche Ausgabe ist davon abhängig welche Job Artifakte von der Pipeline
+aus job1 und job2 als letztes gesichert wurden. Gehen Sie davon aus, dass dies nicht deterministisch ist - insbesondere bei parallel ablaufenden Jobs.
+
 ## Quellen für weitergehende Informationen:
 
 - Youtube: [Gitlab CI pipeline tutorial for beginners](https://youtu.be/Jav4vbUrqII)
+- Youtube: [Gitlab CI Pipeline, Artifacts and Environments](https://youtu.be/PCKDICEe10s)
 - Youtube: [Automating Kubernetes Deployments](https://youtu.be/wEDRfAz6_Uw)
-- Youtube: [Continuous Integration with GitLab CI](https://youtu.be/EuwLdbCu3DE)
+- Gitlab: [Job Artifacts](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html)
 
 
