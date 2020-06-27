@@ -1,25 +1,20 @@
 stages:
-    - build
-    - test
-    - deploy
+    - generate
+    - consume
 
 job1:
-    stage: build
+    stage: generate
     script:
-        - echo "Hello I am job 1"
+        - mkdir build
+        - echo "Hello I am job 1" > build/job1-result.txt
 
 job2:
-    stage: build
+    stage: generate
     script:
-        - echo "Hello I am job 2"
+        - mkdir build
+        - echo "Hello I am job 2" > build/job2-result.txt
 
 job3:
-    stage: test
+    stage: consume
     script:
-        - echo "Hello I am job 3"
-        - exit 1
-
-job4:
-    stage: deploy
-    script:
-        - echo "Hello I am job 4"
+        - cat build/*-result.txt

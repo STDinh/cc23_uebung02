@@ -35,7 +35,7 @@ registrieren.
 - Deployments to Kubernetes
 - Deployments to Serverless Environments
 
-### Übung 1: Erzeugung von Buildpipelines
+### Übung 1: Erzeugung von Deployment Pipelines
 
 Eine Deployment Pipeline besteht aus einer Sequenz von Stages. Jede Stage kann ein oder mehrere Jobs haben. Alle Jobs innerhalb einer
 Stage werden parallel und isoliert voneinander ausgeführt. Eine Stage wird nur dann ausgeführt, wenn alle Jobs der vorherigen Stage
@@ -52,7 +52,7 @@ Solch eine einfache Deployment Pipeline wollen wir nun bauen. Führen Sie hierzu
 __Aufgaben:__
 
 1. Forken Sie hierzu bitte dieses Repository in Gitlab.
-2. Legen Sie in diesem geforkten Repository eine `.gitlab-ci.yml` Datei an. Diese Datei definiert Ihre Pipeline, die Gitlab mit jedem Push in das Repository automatisch anstößt.
+2. Sie finden in diesem geforkten Repository eine leere `.gitlab-ci.yml` Datei an. Diese Datei definiert Ihre Pipeline, die Gitlab mit jedem Push in das Repository automatisch anstößt.
 3. Fügen Sie in diese Datei nun bitte folgende Inhalte ein und committen+pushen Sie `.gitlab-ci.yml` in das Repository:
 
     ```yaml
@@ -105,7 +105,50 @@ Das ist eigentlich auch schon das wesentliche Prinzip von einer Deployment Pipel
 
     ![Pipeline job failed](pipeline-job-failed.png)
 
+### Übung 2: Weiterreichen von Job Erzeugnissen
 
+Jobs laufen isoliert in einem Container ab, sind also zustandslos oder anders ausgedrückt: Jobs "vergessen" erzeugte Artifakte. Dies ist sicherlich in vielen Fällen nicht sinnvoll.
+Z.B. sollten durch den Compiler erzeugte `.class` Dateien in einem Java Build Schritt an einen Test Job weitergereicht werden können (ansonsten müsste der Test Job erneut kompilieren).
+Zum Ende der Pipeline soll vielleicht auch eine `jar`-Datei als Endergebnis der Pipeline bereitgestellt werden können.
+
+Hierfür dienen in Pipelines sogenannte Artefakte. Artefakte sind Job Erzeugnisse, die zwischen Jobs entlang einer Stage Sequenz fließen.
+
+__Aufgabe 2.1:__
+
+Ändern Sie bitte Ihre Pipeline wie folgt ab:
+
+```yaml
+stages:
+    - generate
+    - consume
+
+job1:
+    stage: generate
+    script:
+        - mkdir build
+        - echo "Hello I am job 1" > build/job1-result.txt
+
+job2:
+    stage: generate
+    script:
+        - mkdir build
+        - echo "Hello I am job 2" > build/job2-result.txt
+
+job3:
+    stage: consume
+    script:
+        - cat build/*-result.txt
+```
+
+Die Jobs job1 und job2 lenken ihre Resultate also in zwei Dateien um, die im `build` Verzeichnis gespeichert werden.
+Wir würden an dieser Stelle erwarten, dass der job3 daher folgende Konsolenausgabe erzeugen sollte:
+
+```sh
+Hello I am job1
+Hello I am job2
+```
+
+Tatsächlich passiert dies aber nicht. Warum?
 
 ## Quellen für weitergehende Informationen:
 
