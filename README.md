@@ -26,10 +26,9 @@ registrieren.
 
 ## Inhalt
 
-- Erzeugung einer Build-Pipeline mittels einer Sequenz von Stages
-- Parallele Ausführung von Jobs innerhalb einer Stage, sequentielle Ausführung der einzelnen Stages
-- Weiterreichen von Artifacts zwischen Stages
-- Informationen in die Build-Pipeline mittels [Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html) geben.
+- [Übung 1: Erzeugung von Deployment Pipelines](#übung-1:-erzeugung-von-deployment-pipelines)
+- Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)
+- Übung 3: Informationen in die Pipeline mittels [Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html) geben.
 - Nutzung von Images
 - Bereitstellung von Images
 - Deployments to Kubernetes
@@ -105,7 +104,7 @@ Das ist eigentlich auch schon das wesentliche Prinzip von einer Deployment Pipel
 
     ![Pipeline job failed](pipeline-job-failed.png)
 
-### Übung 2: Weiterreichen von Job Erzeugnissen
+### Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)
 
 Jobs laufen isoliert in einem Container ab, sind also zustandslos oder anders ausgedrückt: Jobs "vergessen" erzeugte Artifakte. Dies ist sicherlich in vielen Fällen nicht sinnvoll.
 Z.B. sollten durch den Compiler erzeugte `.class` Dateien in einem Java Build Schritt an einen Test Job weitergereicht werden können (ansonsten müsste der Test Job erneut kompilieren).
