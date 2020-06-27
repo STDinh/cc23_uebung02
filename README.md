@@ -191,9 +191,10 @@ Weiteres zum Artefakt-Handling finden Sie [hier](https://docs.gitlab.com/ee/ci/p
 ### Übung 3: Informationen in eine Pipeline mittels Umgebungsvariablen geben
 
 Jobs innerhalb von Pipelines benötigen ggf. weitere Informationen. Gem. den 12 Factor Prinzipien kann man diese
-den Containern als Umgebungsvariablen bereitstellen. Gitlab selber hat eine ganze Reihe von vordefinierten Umgebungsvariablen,
+den Containern als Umgebungsvariablen bereitstellen. Gitlab selber hat eine ganze Reihe von [vordefinierten Umgebungsvariablen](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html),
 die man auswerten kann, um die Pipeline zu steuern. Z.B. könnte ein Build auf dem Master-Branch grundsätzlich in die 
-Production Umgebung deployt werden, ein Build auf dem develop Branch in die Staging Umgebung und alle anderen Branches nur in die Test Umgebung.
+Production Umgebung deployt werden, ein Build auf dem release Branch in die Staging Umgebung und alle anderen Branches nur in die Test Umgebung.
+
 
 
 ## Quellen für weitergehende Informationen:
@@ -202,5 +203,6 @@ Production Umgebung deployt werden, ein Build auf dem develop Branch in die Stag
 - Youtube: [Gitlab CI Pipeline, Artifacts and Environments](https://youtu.be/PCKDICEe10s)
 - Youtube: [Automating Kubernetes Deployments](https://youtu.be/wEDRfAz6_Uw)
 - Gitlab: [Job Artifacts](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html)
+- Gitlab: [Predefined Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html)
 
 
