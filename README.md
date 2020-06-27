@@ -26,7 +26,7 @@ registrieren.
 
 ## Inhalt
 
-- [Übung 1: Erzeugung von Deployment Pipelines](#übung-1:-erzeugung-von-deployment-pipelines)
+- [Übung 1: Erzeugung von Deployment Pipelines](#übung-1-erzeugung-von-deployment-pipelines)
 - Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)
 - Übung 3: Informationen in die Pipeline mittels [Environment Variables](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html) geben.
 - Nutzung von Images
