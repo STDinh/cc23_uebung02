@@ -37,4 +37,4 @@ job3:
 job4:
     stage: consume
     script:
-        - cat build/*-result.txt
+        - cat build/*-result.txt 
