@@ -30,6 +30,9 @@ job3:
     script:
         - mkdir build
         - echo "Hello I am job3 and always executed except for the master or release branch" > build/job3-result.txt
+    artifacts:
+        paths:
+            - build/
     except:
         - master
         - release
