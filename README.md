@@ -261,15 +261,15 @@ Veranschaulichen Sie sich die Wirkungsweise:
 
 1. Pushen Sie dieses Pipeline einmal in den master Branch erhalten Sie die Ausgabe im job4
     ```
-    Hello I am job 1 executed on the master branch only.
+    Hello I am job 1, executed on the master branch only.
     ```
 2. Pushen Sie diese Pipeline in den release Branch erhalten Sie die Ausgabe im job4.
     ```
-    Hello I am job 1 executed on the release branch only.
+    Hello I am job 1, executed on the release branch only.
     ```
 3. Pushen Sie diese Pipeline in irgendeinen anderen Branch erhalten Sie die Ausgabe im job4.
     ```
-    Hello I am job3 and always executed except for the master or release branch
+    Hello I am job3, and always executed except for the master or release branch
     ```
 
 Auf diese Weise lassen sich einzelne Jobs in der Pipeline nur unter Bedingungen ausführen,
