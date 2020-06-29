@@ -5,6 +5,9 @@ stages:
     - info
     - test
 
+services:
+    - docker:dind
+
 docker:
     stage: info
     script:
