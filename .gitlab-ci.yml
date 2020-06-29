@@ -11,6 +11,7 @@ docker:
         - docker:dind
     script:
         - docker info
+        - echo $CI_REGISTRY_NAME
 
 java:
     stage: test
