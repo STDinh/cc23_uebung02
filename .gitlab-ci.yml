@@ -2,7 +2,15 @@ variables:
     GREET: "Mundo"
 
 stages:
+    - info
     - test
+
+docker:
+    stage: info
+    services:
+        - docker:dind
+    script:
+        - docker info
 
 java:
     stage: test
