@@ -275,6 +275,60 @@ Veranschaulichen Sie sich die Wirkungsweise:
 Auf diese Weise lassen sich einzelne Jobs in der Pipeline nur unter Bedingungen ausführen,
 die sich über Umgebungsvariablen setzen lassen.
 
+## Übung 4: Nutzung von Images
+
+Bislang haben wir im Wesentlichen nur Kommandozeilen Programme des Linux/UNIX Standardumfangs genutzt.
+Wir wollen nun zwei kleine Hello-World Programme in Java und Python bauen, um zu demonstrieren, dass
+man in Jobs unterschiedliche Images für Jobs nutzen kann.
+
+__Aufgaben:__
+
+Fügen Sie daher bitte einen Ordner `src` diesem Repository hinzu. In `src` legen Sie dann bite die beiden
+folgenden Dateien an:
+
+- `Hello.java`:
+   ```Java
+    public class Hello {
+        public static void main(String[] args) {
+            System.out.println("Hello " + args[0]);
+        }
+    }
+   ```
+-  `hello.py`:
+   ```Python
+   import sys
+   print(f"Hello {sys.argv[1]}")
+   ```
+
+Passen Sie dann bitte Ihre `.gitlab-ci.yml`-Datei wie folgt an:
+
+```Yaml
+variables:
+    GREET: "Mundo"
+
+stages:
+    - test
+
+java:
+    stage: test
+    script:
+        - javac src/*.java
+        - java -cp src/ Hello $GREET > result.txt
+        - cat result.txt
+        - cat result.txt | grep "Hello $GREET"
+
+python:
+    stage: test
+    script:
+        - python src/hello.py $GREET > result.txt
+        - cat result.txt
+        - cat result.txt | grep "Hello $GREET"
+```
+
+Wenn Sie diese Pipeline laufen lassen, werden Sie folgende Fehlermeldungen im Job *java* und *python* bekommen:
+
+
+
 
 
 
