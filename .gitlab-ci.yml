@@ -1,43 +1,29 @@
+variables:
+    GREET: "Mundo"
+
 stages:
-    - generate
-    - consume
+    - build
+    - test
 
-job1:
-    stage: generate
+compile:
+    stage: build
+    image: openjdk:14.0
     script:
-        - mkdir build
-        - echo "Hello I am job 1 executed on the $CI_COMMIT_REF_NAME branch only" > build/job1-result.txt
-    artifacts:
-        paths:
-            - build/
-    only:
-        - master
+        - javac src/*.java
 
-job2:
-    stage: generate
+java:
+    stage: test
+    image: openjdk:14.0
     script:
-        - mkdir build
-        - echo "Hello I am job 2 executed on the $CI_COMMIT_REF_NAME branch only" > build/job2-result.txt
-    artifacts:
-        paths:
-            - build/
-    only:
-        variables:
-            - $CI_COMMIT_REF_NAME == "release"
+        - javac src/*.java
+        - java -cp src/ Hello $GREET > result.txt
+        - cat result.txt
+        - cat result.txt | grep "Hello $GREET"
 
-job3:
-    stage: generate
+python:
+    stage: test
+    image: python:3-slim
     script:
-        - mkdir build
-        - echo "Hello I am job3 and always executed except for the master or release branch" > build/job3-result.txt
-    artifacts:
-        paths:
-            - build/
-    except:
-        - master
-        - release
-            
-job4:
-    stage: consume
-    script:
-        - cat build/*-result.txt 
+        - python src/hello.py $GREET > result.txt
+        - cat result.txt
+        - cat result.txt | grep "Hello $GREET"
