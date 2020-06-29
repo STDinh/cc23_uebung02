@@ -286,19 +286,20 @@ __Aufgaben:__
 Fügen Sie daher bitte einen Ordner `src` diesem Repository hinzu. In `src` legen Sie dann bite die beiden
 folgenden Dateien an:
 
-- `Hello.java`:
-   ```Java
-    public class Hello {
-        public static void main(String[] args) {
-            System.out.println("Hello " + args[0]);
-        }
+__`Hello.java`:__
+```Java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello " + args[0]);
     }
-   ```
--  `hello.py`:
-   ```Python
-   import sys
-   print(f"Hello {sys.argv[1]}")
-   ```
+}
+```
+
+__`hello.py`:__
+```Python
+import sys
+print(f"Hello {sys.argv[1]}")
+```
 
 Passen Sie dann bitte Ihre `.gitlab-ci.yml`-Datei wie folgt an:
 
@@ -325,11 +326,27 @@ python:
         - cat result.txt | grep "Hello $GREET"
 ```
 
-Wenn Sie diese Pipeline laufen lassen, werden Sie folgende Fehlermeldungen im Job *java* und *python* bekommen:
+Wenn Sie diese Pipeline laufen lassen, werden Sie folgende Fehlermeldungen im Job *java* bzw. *python* bekommen:
 
+```
+javac: not found
+python: not found
+```
 
+Dies hängt damit zusammen, dass das Standard Gitlab Job Image weder das Java JDK noch die Python Laufzeitumgebung beinhaltet.
+Sie können Jobs aber auf Basis anderer Images laufen lassen, z.B. mit den Standard Images, die auf DockerHub für die gebräuchlichsten
+Programmiersprachen angeboten werden. 
 
+Sie können z.B.
 
+- die Angaben `image: "openjdk:14"` im Job *java* hinzufügen, um vorzugeben, dass der *java* Job auf dem openjdk Image für Java 14
+- und die Angabe `image: "python:3-slim"` im Job *python* hinzufügen, um vorzugeben, dass der *python* Job auf dem Python 3 slim (besonders kleines Python3 Image)
+
+basieren soll.
+
+Wenn Sie diese Angaben ergänzen, werden Sie sehen, dass die Pipeline nun durchläuft. Auf diese Weise können Sie also an unterschiedlichen Stellen in einer Pipeline unterschiedliche Container Images nutzen. Idealerweise sollten die Images natürlich kompatibel zur beabsichtigten Production Umgebung sein.
+
+Wenn alle (oder viele) Jobs einer Pipeline auf demselben Image basieren sollen, können Sie diese `image` Angabe auch außerhalb der Jobs als Default Job Image der Pipeline angeben. Sie müssen dann nur noch bei den Jobs andere Images angeben, die explizit nicht mit dem Default Job Image der Pipeline laufen sollen.
 
 
 ## Quellen für weitergehende Informationen:

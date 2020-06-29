@@ -6,6 +6,7 @@ stages:
 
 java:
     stage: test
+    image: "openjdk:14"
     script:
         - javac src/*.java
         - java -cp src/ Hello $GREET > result.txt
@@ -14,6 +15,7 @@ java:
 
 python:
     stage: test
+    image: "python:3-slim"
     script:
         - python src/hello.py $GREET > result.txt
         - cat result.txt
