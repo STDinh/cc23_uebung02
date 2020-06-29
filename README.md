@@ -29,7 +29,7 @@ registrieren.
 - [Übung 1: Erzeugung von Deployment Pipelines](#übung-1-erzeugung-von-deployment-pipelines)
 - [Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)](#übung-2-weiterreichen-von-job-erzeugnissen-artifacts)
 - [Übung 3: Informationen in eine Pipeline mittels Umgebungsvariablen geben](#übung-3-informationen-in-eine-pipeline-mittels-umgebungsvariablen-geben)
-- Nutzung von Images
+- [Übung 4: Nutzung von Images](#übung-4-nutzung-von-images)
 - Bereitstellung von Images
 - Deployments to Kubernetes
 - Deployments to Serverless Environments
@@ -194,6 +194,18 @@ Jobs innerhalb von Pipelines benötigen ggf. weitere Informationen. Gem. den 12 
 den Containern als Umgebungsvariablen bereitstellen. Gitlab selber hat eine ganze Reihe von [vordefinierten Umgebungsvariablen](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html),
 die man auswerten kann, um die Pipeline zu steuern. Z.B. könnte ein Build auf dem Master-Branch grundsätzlich in die 
 Production Umgebung deployt werden, ein Build auf dem release Branch in die Staging Umgebung und alle anderen Branches nur in die Test Umgebung.
+
+Sie können Informationen mittels Umgebungsvariablen im Wesentlichen auf die folgenden Arten an Jobs innerhalb von Pipelines übergeben:
+
+1. Mittels Pipeline globaler Variablen indem Sie diese Variablen Toplevel in der `.gitlab-ci.yml` deklarieren. Also bspw. so. 
+   ```yaml
+   variables:
+      FOO: "BAR"
+   ```
+2. Mittels der bereits erwähnten [vordefinierten Umgebungsvariablen](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html), die vom Gitlab CI Build-System gesetzt werden.
+3. Mittels in der Gitlab CI Oberfläche gesetzten Variablen. Diese können Sie in den [CI/CD Settings](../../../settings/ci_cd) (Variables) eines jeden Repositories setzen. Dies bietet sich insbesondere für Daten an, die niemals in eine Versionsverwaltung gehören - also insbesondere Zugangsdaten, Passwörter. Diese Variablen können in der Gitlab CI Oberfläche sogar als Masked gekennzeichnet werden, damit diese Werte nicht in Logdateien oder Konsolenausgaben im Klartext zu lesen sind.
+
+Alle diese Variablen werden in Job Containern als Umgebungsvariablen gesetzt und können mittels der Standard Shell Variableninterpolation `$FOO` ausgewertet werden bzw. von Programmen ausgelesen werden. Häufig nutzt man dies dazu den Pipeline Prozess zu steuern. Dies soll dieses Beispiel veranschaulichen.
 
 __Aufgabe:__
 
