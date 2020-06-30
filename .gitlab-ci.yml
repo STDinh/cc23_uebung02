@@ -9,4 +9,4 @@ docker:
     image: "lwolf/kubectl_deployer"
     script:
         - which kubectl
-        - kubectl version --kubeconfig=$KUBE_CONFIG
+        - kubectl get all --kubeconfig=$KUBE_CONFIG
