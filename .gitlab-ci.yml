@@ -11,6 +11,7 @@ docker:
     script:
         - echo $DEPLOYMENT_SECRET
         - cat $KUBE_CONFIG
+        - mkdir $(pwd)/.kube
         - cat $KUBE_CONFIG > $(pwd)/.kube/config
         - kubectl info
 
