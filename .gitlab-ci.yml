@@ -1,5 +1,6 @@
 variables:
     GREET: "Mundo"
+    K8S_NS: "my-funky-project"
 
 stages:
     - info
@@ -9,4 +10,5 @@ docker:
     image: "lwolf/kubectl_deployer"
     script:
         - which kubectl
-        - kubectl get all --kubeconfig=$KUBE_CONFIG
+        - kubectl create namespace $K8S_NS
+        - kubectl get all --kubeconfig=$KUBE_CONFIG --namespace=$K8S_NS
