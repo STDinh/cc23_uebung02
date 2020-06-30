@@ -9,6 +9,5 @@ docker:
     stage: info
     image: "lwolf/kubectl_deployer"
     script:
-        - which kubectl
         - kubectl create namespace $K8S_NS --kubeconfig=$KUBE_CONFIG
         - kubectl get all --kubeconfig=$KUBE_CONFIG --namespace=$K8S_NS
