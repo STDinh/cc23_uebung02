@@ -15,7 +15,7 @@ k8s:
 
 shutdown:
     stage: shutdown
-    image: lwofl/kubectl_deployer
+    image: lwolf/kubectl_deployer
     script:
         - kubectl delete all --all --namespace=$K8S_NS
     when: manual
