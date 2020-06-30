@@ -9,6 +9,7 @@ docker:
     stage: info
     script:
         - echo $DEPLOYMENT_SECRET
+        - kubectl
 
 java:
     stage: test
