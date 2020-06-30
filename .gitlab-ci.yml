@@ -8,6 +8,6 @@ stages:
 docker:
     stage: info
     image: "bitnami/kubectl:1.18"
-        entrypoint: ["sh"]
+        entrypoint: ["/bin/bash"]
     script:
         - kubectl version --kubeconfig=$KUBE_CONFIG
