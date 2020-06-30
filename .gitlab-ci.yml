@@ -10,10 +10,7 @@ docker:
     image: "k3integrations/kubectl"
     script:
         - echo $DEPLOYMENT_SECRET
-        - cat $KUBE_CONFIG
-        - mkdir $(pwd)/.kube
-        - cat $KUBE_CONFIG > $(pwd)/.kube/config
-        - kubectl version
+        - kubectl version --kubeconfig=$KUBE_CONFIG
 
 java:
     stage: test
