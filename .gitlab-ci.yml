@@ -3,7 +3,6 @@ variables:
 
 stages:
     - info
-    - test
 
 docker:
     stage: info
