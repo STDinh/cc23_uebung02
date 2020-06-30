@@ -9,5 +9,6 @@ docker:
     image: 
         name: "bitnami/kubectl:1.18"
         entrypoint: ["/bin/bash"]
+        command: []
     script:
         - kubectl version --kubeconfig=$KUBE_CONFIG
