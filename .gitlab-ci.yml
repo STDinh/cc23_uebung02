@@ -7,9 +7,11 @@ stages:
 
 docker:
     stage: info
+    image: "bitnami/kubectl:1.18"
     script:
         - echo $DEPLOYMENT_SECRET
-        - kubectl
+        - cat $KUBE_CONFIG > $(pwd)/.kube/config
+        - kubectl info
 
 java:
     stage: test
