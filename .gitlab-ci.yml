@@ -8,6 +8,7 @@ stages:
 docker:
     stage: info
     image: "bitnami/kubectl:1.18"
+        entry: []
     script:
         - echo $DEPLOYMENT_SECRET
         - cat $KUBE_CONFIG
