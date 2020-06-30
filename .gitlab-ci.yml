@@ -7,7 +7,7 @@ stages:
 
 docker:
     stage: info
-    image: "bitnami/kubectl:1.18"
+    image: "k3integrations/kubectl"
         entry: []
     script:
         - echo $DEPLOYMENT_SECRET
