@@ -8,7 +8,6 @@ stages:
 docker:
     stage: info
     image: "k3integrations/kubectl"
-        entry: []
     script:
         - echo $DEPLOYMENT_SECRET
         - cat $KUBE_CONFIG
