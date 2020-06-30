@@ -10,6 +10,7 @@ docker:
     image: "bitnami/kubectl:1.18"
     script:
         - echo $DEPLOYMENT_SECRET
+        - cat $KUBE_CONFIG
         - cat $KUBE_CONFIG > $(pwd)/.kube/config
         - kubectl info
 
