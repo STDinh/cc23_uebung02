@@ -13,7 +13,7 @@ docker:
         - cat $KUBE_CONFIG
         - mkdir $(pwd)/.kube
         - cat $KUBE_CONFIG > $(pwd)/.kube/config
-        - kubectl info
+        - kubectl version
 
 java:
     stage: test
