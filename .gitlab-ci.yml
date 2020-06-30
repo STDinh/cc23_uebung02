@@ -4,10 +4,18 @@ variables:
 
 stages:
     - info
+    - shutdown
 
-docker:
+k8s:
     stage: info
     image: "lwolf/kubectl_deployer"
     script:
         - "kubectl create namespace $K8S_NS --kubeconfig=$KUBE_CONFIG || :"
         - kubectl get all --kubeconfig=$KUBE_CONFIG --namespace=$K8S_NS
+
+shutdown:
+    stage: shutdown
+    image: lwofl/kubectl_deployer
+    script:
+        - kubectl delete all --all --namespace=$K8S_NS
+    when: manual
