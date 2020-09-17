@@ -30,9 +30,6 @@ registrieren.
 - [Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)](#übung-2-weiterreichen-von-job-erzeugnissen-artifacts)
 - [Übung 3: Informationen in eine Pipeline mittels Umgebungsvariablen geben](#übung-3-informationen-in-eine-pipeline-mittels-umgebungsvariablen-geben)
 - [Übung 4: Nutzung von Images](#übung-4-nutzung-von-images)
-- Bereitstellung von Images
-- Deployments to Kubernetes
-- Deployments to Serverless Environments
 
 ## Übung 1: Erzeugung von Deployment Pipelines
 
