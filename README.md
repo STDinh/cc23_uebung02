@@ -34,7 +34,7 @@ registrieren.
 - Deployments to Kubernetes
 - Deployments to Serverless Environments
 
-### Übung 1: Erzeugung von Deployment Pipelines
+## Übung 1: Erzeugung von Deployment Pipelines
 
 Eine Deployment Pipeline besteht aus einer Sequenz von Stages. Jede Stage kann ein oder mehrere Jobs haben. Alle Jobs innerhalb einer
 Stage werden parallel und isoliert voneinander ausgeführt. Eine Stage wird nur dann ausgeführt, wenn alle Jobs der vorherigen Stage
@@ -104,7 +104,7 @@ Das ist eigentlich auch schon das wesentliche Prinzip von einer Deployment Pipel
 
     ![Pipeline job failed](pipeline-job-failed.png)
 
-### Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)
+## Übung 2: Weiterreichen von Job Erzeugnissen (Artifacts)
 
 Jobs laufen isoliert in einem Container ab, sind also zustandslos oder anders ausgedrückt: Jobs "vergessen" erzeugte Artifakte. Dies ist sicherlich in vielen Fällen nicht sinnvoll.
 Z.B. sollten durch den Compiler erzeugte `.class` Dateien in einem Java Build Schritt an einen Test Job weitergereicht werden können (ansonsten müsste der Test Job erneut kompilieren).
@@ -188,7 +188,7 @@ aus job1 und job2 als letztes gesichert wurden. Gehen Sie davon aus, dass dies n
 
 Weiteres zum Artefakt-Handling finden Sie [hier](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html).
 
-### Übung 3: Informationen in eine Pipeline mittels Umgebungsvariablen geben
+## Übung 3: Informationen in eine Pipeline mittels Umgebungsvariablen geben
 
 Jobs innerhalb von Pipelines benötigen ggf. weitere Informationen. Gem. den 12 Factor Prinzipien kann man diese
 den Containern als Umgebungsvariablen bereitstellen. Gitlab selber hat eine ganze Reihe von [vordefinierten Umgebungsvariablen](https://docs.gitlab.com/ee/ci/variables/predefined_variables.html),
