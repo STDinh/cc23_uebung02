@@ -1,4 +1,4 @@
-# Lab: Deployment Pipelines as Code
+# Lab 02: Deployment Pipelines as Code
 
 Deployment Pipelines sind ein wesentlicher Baustein im DevOps Ansatz, um Entwicklungszyklen schnell und agil zu halten.
 Ziel ist es, Code der in ein Code Repository eingebracht wird, möglichst automatisiert zu integrieren, bauen, testen
