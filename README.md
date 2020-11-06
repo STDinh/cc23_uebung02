@@ -277,11 +277,10 @@ Bislang haben wir im Wesentlichen nur Kommandozeilen Programme des Linux/UNIX St
 
 __Aufgaben:__
 
-Fügen Sie daher bitte einen Ordner `src` diesem Repository hinzu. In `src` legen Sie dann bite die beiden
-folgenden Dateien an:
+Sie finden hierzu im Ordner `src` die beiden folgenden Dateien (wenn nicht, legen Sie diese bitte mit den angegebenen Namen `Hello.java` und `hello.py` an):
 
 __`Hello.java`:__
-```Java
+```java
 public class Hello {
     public static void main(String[] args) {
         System.out.println("Hello " + args[0]);
@@ -290,14 +289,14 @@ public class Hello {
 ```
 
 __`hello.py`:__
-```Python
+```python
 import sys
 print(f"Hello {sys.argv[1]}")
 ```
 
 Passen Sie dann bitte Ihre `.gitlab-ci.yml`-Datei wie folgt an:
 
-```Yaml
+```yaml
 variables:
     GREET: "Mundo"
 
