@@ -345,7 +345,7 @@ Wenn alle (oder viele) Jobs einer Pipeline auf demselben Image basieren sollen, 
 2. Gemäß dem Everything as Code Ansatz versucht man auch Deployment Pipelines als versionierbaren Code ausdrücken zu können.
 3. Deployment Pipelines gliedern sich in eine Folge sequentiell ausgeführter Stages (o. ähnl. Bezeichnung).
 4. Innerhalb von Stages laufen parallel ausführbare Jobs (o. ähnl. Bezeichnung).
-5. Jeder Job läuft in einem Container, nicht alle Jobs bauen müssen dasselbe Container-Image haben.
+5. Jeder Job läuft in einem Container, nicht alle Jobs müssen dasselbe Container-Image haben.
 6. Ein Job ist ein Shellskript (Sequenz von Commands), dass erfolgreich ist, wenn es den Exit Code 0 liefert. Wenn ein Command einen anderen Exit Code als 0 liefert, wird der Job als nicht erfolgreich abgebrochen.
 7. Das Repository wird in jedem Job als Input bereitgestellt.
 8. Ein Job kann Artefakte (Output) produzieren, die an Jobs in Folge-Stages weitergegeben und auch archiviert werden können.
