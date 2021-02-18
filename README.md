@@ -251,8 +251,8 @@ Dies erweitert die Pipeline um einen weiteren Job in der generate Stage. Jobs we
 
 Hierzu wurden `only` bzw. `except` den Jobs als Bedingung mitgegeben. 
 
-- [`only`](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) schließt einen Job ein, wenn alle Schlüssel (bzw. Branch- oder Tag-Bezeichner) mindestens eine übereinstimmende Bedingung (bzw. eine Übereinstimmung) haben.
-- [`except`](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) schließt einen Job aus, wenn einer der Schlüssel (bzw. Branch- oder Tag-Bezeichner) mindestens eine übereinstimmende Bedingung (bzw. eine Übereinstimmung) hat.
+- [`only`](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) schließt einen Job ein, wenn alle Schlüssel (bzw. einer der Branch- oder Tag-Bezeichner) mindestens eine übereinstimmende Bedingung (bzw. eine Übereinstimmung) haben.
+- [`except`](https://docs.gitlab.com/ee/ci/yaml/#onlyexcept-basic) schließt einen Job aus, wenn einer der Schlüssel (bzw. einer der Branch- oder Tag-Bezeichner) mindestens eine übereinstimmende Bedingung (bzw. eine Übereinstimmung) hat.
 
 Veranschaulichen Sie sich die Wirkungsweise:
 
