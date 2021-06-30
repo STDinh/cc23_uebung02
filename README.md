@@ -31,7 +31,7 @@ Wer mag, kann dieses Lab auch mittels des Managed Service Gitlab.com nachvollzie
 
 ## Vorbereitung
 
-[Forken](https://git.mylab.th-luebeck.de/cloud-native/lab-gitlab/-/forks/new) Sie bitte dieses in Gitlab in Ihren Namensraum.
+[Forken](https://git.mylab.th-luebeck.de/cloud-native/lab-gitlab/-/forks/new) Sie bitte dieses Repository in Gitlab in Ihren Namensraum.
 
 ## Übung 1: Erzeugung von Deployment Pipelines
 
