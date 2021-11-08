@@ -262,7 +262,7 @@ Veranschaulichen Sie sich die Wirkungsweise:
     ```
 2. Pushen Sie diese Pipeline in den release Branch erhalten Sie die Ausgabe im job4.
     ```
-    Hello I am job 1, executed on the release branch only.
+    Hello I am job 2, executed on the release branch only.
     ```
 3. Pushen Sie diese Pipeline in irgendeinen anderen Branch erhalten Sie die Ausgabe im job4.
     ```
