@@ -1,5 +1,8 @@
 # Lab 02: Deployment Pipelines as Code
 
+> __Hinweis:__ Dieses Lab ist so gestaltet, dass es problemlos mit dem [Gitlab](https://git.mylab.th-luebeck.de)-Service der TH Lübeck bearbeitet werden kann.
+Wer mag, kann dieses Lab aber auch mittels des Managed Service [Gitlab.com](https://gitlab.com) nachvollziehen. Hierzu müssen Sie sich allerdings [registrieren](https://gitlab.com/users/sign_up). Dies betrifft insbesondere Personen, die keine Studierenden oder Angehörigen der TH Lübeck sind.
+
 Deployment Pipelines sind ein wesentlicher Baustein im DevOps Ansatz, um Entwicklungszyklen schnell und agil zu halten. Ziel ist es, Code der in ein Code Repository eingebracht wird, möglichst automatisiert zu integrieren, bauen, testen sowie ggf. in eine Umgebung (häufig Test, Staging, Production) auszubringen.
 
 Mit jedem Code Push wird also automatisiert geprüft, ob der Code in die bestehende Codebasis integriert werden kann, compilierbar ist, alle Tests passiert und deploybar ist. Auf diese Weise können nur funktionierende Softwarezustände in funktionierende Softwarezustände überführt werden. Entwickler sind so nicht einmal in der Lage Code zu erzeugen, der nicht automatisiert durch die Deployment Pipeline verarbeitbar ist.
@@ -14,8 +17,6 @@ Gemäß dem Everything as Code Ansatz versucht man auch Deployment Pipelines als
 - und viele mehr
 
 Da Gitlab als Open Source Lösung einfach installiert werden kann, werden wir das Prinzip einer Deployment Pipeline as Code am Typvertreter Gitlab CI demonstrieren. Die Ansätze anderer CI/CD Dienste funktionieren aber nach sehr vergleichbaren Konzepten. Die Wahl auf Gitlab CI als Typvertreter erfolgt schlicht und ergreifend auf Basis der guten Verfügbarkeit von Gitlab als Open Source Software und dessen häufigen Einsatz in Cloud-native Kontexten.
-
-Wer mag, kann dieses Lab auch mittels des Managed Service Gitlab.com nachvollziehen. Hierzu müssen Sie sich allerdings registrieren.
 
 ## Inhalt
 
