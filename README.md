@@ -1,6 +1,6 @@
 # Lab 02: Deployment Pipelines as Code
 
-> __Hinweis:__ Dieses Lab ist so gestaltet, dass es problemlos mit dem [Gitlab](https://git.mylab.th-luebeck.de)-Service der TH Lübeck bearbeitet werden kann.
+> __Hinweis:__ Dieses Lab ist so gestaltet, dass es problemlos mit dem [Gitlab](https://gitlab.iue.fh-kiel.de)-Service der FH-Kiel bearbeitet werden kann.
 Wer mag, kann dieses Lab aber auch mittels des Managed Service [Gitlab.com](https://gitlab.com) nachvollziehen. Hierzu müssen Sie sich allerdings [registrieren](https://gitlab.com/users/sign_up). Dies betrifft insbesondere Personen, die keine Studierenden oder Angehörigen der TH Lübeck sind.
 
 Deployment Pipelines sind ein wesentlicher Baustein im DevOps Ansatz, um Entwicklungszyklen schnell und agil zu halten. Ziel ist es, Code der in ein Code Repository eingebracht wird, möglichst automatisiert zu integrieren, bauen, testen sowie ggf. in eine Umgebung (häufig Test, Staging, Production) auszubringen.
@@ -32,7 +32,7 @@ Da Gitlab als Open Source Lösung einfach installiert werden kann, werden wir da
 
 ## Vorbereitung
 
-[Forken](https://git.mylab.th-luebeck.de/cloud-native/lab-gitlab/-/forks/new) Sie bitte dieses Repository in Gitlab in Ihren Namensraum.
+[Forken](https://gitlab.iue.fh-kiel.de/cc23/unit-2-deployment-pipelines/-/forks/new) Sie bitte dieses Repository in Gitlab in Ihren Namensraum.
 
 ## Übung 1: Erzeugung von Deployment Pipelines
 
