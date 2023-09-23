@@ -84,6 +84,9 @@ __Aufgaben:__
    
    ![Job console output](job-console.png)
 
+5. Ergänzen Sie die Pipeline um einen weiteren Job mit dem Namen `job5`, der in einer neuen Stage `foobar` ausgeführt wird. Lassen Sie diesen Job einfach nur `Hello Mundo, I am job 5` ausgibt. Welchen Einfluss hat die Stelle in der Datei, an der Sie den Job einfügen?
+
+ 
 Eine Pipeline ist also sehr einfach mit einer YAML Datei definierbar. YAML Dateien wiederum sind gut durch Code Versionssysteme versionierbar.
 
 Das ist eigentlich auch schon das wesentliche Prinzip von einer Deployment Pipeline as Code. Sie sehen an diesem Beispiel allerdings auch bereits weitere Aspekte die typisch für Cloud-native Deployment Ansätze sind.
@@ -175,6 +178,9 @@ echo "Hello I am job 2" > build/job-result.txt
 ```
 
 Dann werden Sie nur eine Ausgabe von job1 oder job2 bekommen. Welche Ausgabe ist davon abhängig welche Job Artifakte von der Pipeline aus job1 und job2 als letztes gesichert wurden. Gehen Sie davon aus, dass dies nicht deterministisch ist - insbesondere bei parallel blaufenden Jobs.
+
+Ergänzen Sie nun die Pipeline so, dass zusätzlich eine einzelne Datei mit dem Namen `artifact.txt` gemeinsam von allen Jobs der generate Stage befüllt wird (jeder Job eine Zeile) und von dem Job der consume Stage ausgegeben wird. Die einzelnen Jobs sollen dabei nicht die Inhalte der anderen Jobs überschreiben. Die Datei soll **nicht** in dem Unterverzeichnis `build` abgelegt werden. Wie muss die Pipeline dafür strukturiert sein?
+> Hinweis: Sie können mit dem Befehl `echo "foo" >> bar.txt` eine Zeile an die Datei `bar.txt` anhängen. Wenn die Datei `bar.txt` noch nicht existiert, dann wird sie erzeugt.
 
 Weiteres zum Artefakt-Handling finden Sie [hier](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html).
 
@@ -272,6 +278,14 @@ Veranschaulichen Sie sich die Wirkungsweise:
 
 Auf diese Weise lassen sich einzelne Jobs in der Pipeline nur unter Bedingungen ausführen, die sich über Umgebungsvariablen setzen lassen.
 
+Erzeugen Sie zwei Umgebungsvariablen in den CI/CD Settings Ihres Repositories:
+* `PASSWORD` mit dem Wert `secret` und markieren Sie diese Variable als Masked.
+* `PUBLIC` mit dem Wert `public`.
+Erzeugen Sie dann bitte einen weiteren Job in der Pipeline, der die beiden Umgebungsvariablen ausliest und ausgibt.
+
+Definieren Sie eine dritte Variable mit dem Namen PUBLIC2 und dem Wert `public2` in der `.gitlab-ci.yml` Datei. Lassen Sie den Job diese Variable ebenfalls ausgeben.
+
+
 ## Übung 4: Nutzung von Images
 
 Bislang haben wir im Wesentlichen nur Kommandozeilen Programme des Linux/UNIX Standardumfangs genutzt. Wir wollen nun zwei kleine Hello-World Programme in Java und Python bauen, um zu demonstrieren, dass man in Jobs unterschiedliche Images für Jobs nutzen kann.
@@ -339,6 +353,9 @@ basieren soll.
 Wenn Sie diese Angaben ergänzen, werden Sie sehen, dass die Pipeline nun durchläuft. Auf diese Weise können Sie also an unterschiedlichen Stellen in einer Pipeline unterschiedliche Container Images nutzen. Idealerweise sollten die Images natürlich kompatibel zur beabsichtigten Production Umgebung sein.
 
 Wenn alle (oder viele) Jobs einer Pipeline auf demselben Image basieren sollen, können Sie diese `image` Angabe auch außerhalb der Jobs als Default Job Image der Pipeline angeben. Sie müssen dann nur noch bei den Jobs andere Images angeben, die explizit nicht mit dem Default Job Image der Pipeline laufen sollen.
+
+Ergänzen Sie die Pipeline um zwei zusätzlichen Job, die jeweils `Hello World, I am Job [1|2]!` ohne Nutzung von Java und Python ausgibt. Diese und alle anderen Jobs - mit Ausnahme der Java und Python Jobs - sollen mit dem Image `alpine:3` laufen. Wo muss die `image` Angabe hierfür ergänzt werden? Reicht es aus, wenn die Angabe nur an einer Stelle steht?
+
 
 ## Was sollten Sie mitnehmen
 
