@@ -279,7 +279,7 @@ Veranschaulichen Sie sich die Wirkungsweise:
 Auf diese Weise lassen sich einzelne Jobs in der Pipeline nur unter Bedingungen ausführen, die sich über Umgebungsvariablen setzen lassen.
 
 Erzeugen Sie zwei Umgebungsvariablen in den CI/CD Settings Ihres Repositories:
-* `PASSWORD` mit dem Wert `secret` und markieren Sie diese Variable als Masked.
+* `PASSWORD` mit dem Wert `secret123` und markieren Sie diese Variable als Masked.
 * `PUBLIC` mit dem Wert `public`.
 Erzeugen Sie dann bitte einen weiteren Job in der Pipeline, der die beiden Umgebungsvariablen ausliest und ausgibt.
 
